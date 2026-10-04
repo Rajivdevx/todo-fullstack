@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
   const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ function App() {
     const getTasks = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:5000/api/tasks"
+          `${API_URL}/api/tasks`
         );
 
         if (!response.ok) {
@@ -40,7 +41,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:5000/api/tasks",
+        `${API_URL}/api/tasks`,
         {
           method: "POST",
           headers: {
@@ -69,7 +70,7 @@ function App() {
   const deleteTask = async (id) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         {
           method: "DELETE"
         }
@@ -89,7 +90,7 @@ function App() {
   const toggleTask = async (id, completed) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -131,7 +132,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/tasks/${id}`,
+        `${API_URL}/api/tasks/${id}`,
         {
           method: "PATCH",
           headers: {
